@@ -5,7 +5,7 @@ To examine the evolution of error handling in the context of Solidity we have de
 The `dataset` folder contains our `dataset`, as well as a `sample` of 10 real-world smart contracts.
 The `src` folder contains the scripts of our tool:
  - `contract_vistor.py` : which takes as input every contract of the sample folder and extract each error-handling feature.
- - `HR.py` : which finds *external calls, function arguments, external contract creation, revert statement-function, division by zero, enum type conversion, overflows, division by zero*.
+ - `HR.py` : which finds *external calls, function arguments, external contract creation, revert statement-function, division by zero, enum type conversion, overflows/underflows, division by zero*.
  - `fetchdata.py` : the script to collect contracts from etherscan.
 
 Note that the scripts take as input the the contracts from the `sample` folder.
