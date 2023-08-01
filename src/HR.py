@@ -1,13 +1,13 @@
 from pathlib import Path 
 import re
 
-file = Path('~/solbench/data/sample/0xfd1d97f0d8b100a9df095b40a13520af13df7ec1.sol')
+file = Path('../dataset/sample/0xfd1d97f0d8b100a9df095b40a13520af13df7ec1.sol')
 with file.open() as open_file:
     for line in open_file:
         if ('enum' in line): # enum type
             enumtype = line.split(" ")[1]
             print(enumtype)
-            file = Path('0xfd1d97f0d8b100a9df095b40a13520af13df7ec1.sol')
+            file = Path('../dataset/sample/0xfd1d97f0d8b100a9df095b40a13520af13df7ec1.sol')
             with file.open() as open_file:
                 for line in open_file:
                     if (enumtype in line):

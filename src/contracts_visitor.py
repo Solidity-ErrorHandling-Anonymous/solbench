@@ -1,8 +1,3 @@
-#cat mydata.json | python -m json.tool > pretty.json
-#mv /media/harry/Toshiba\ SecondBrainHDD/stef_etherscan_contracts/*/* /media/harry/Toshiba\ SecondBrainHDD/allcontracts/
-
-#done '/media/harry/Toshiba SecondBrainHDD/stef_etherscan_contracts'
-
 import os
 import matplotlib.pyplot as plt
 import numpy as np
@@ -153,7 +148,6 @@ def findWord(dire, word1, word2, word3, word4):
                     if ("function" in line_list[4]) and ('*' not in line_list[3] and line_list[3] != "//") and ('*' not in line_list[2] and "//" not in line_list[2]) and ('*' not in line_list[1] and "//" not in line_list[1])  and ('*' not in line_list[0] and "//" not in line_list[0]) :
                         fun_name=line_list[4]
                         func_count+=1
-                        print("KKSOOID")
                         if "function" in line_list:
                             funcs={
                                'function name': re.split(r'[(]', line_list[5])[0],
@@ -505,5 +499,5 @@ def findWord(dire, word1, word2, word3, word4):
             json.dump(contracts, f)
 
 if __name__ == '__main__':
-    findWord('~/solbench/data/sample', 'require', 'assert', 'try {', 'revert')
+    findWord('../dataset/sample', 'require', 'assert', 'try {', 'revert')
 #    findfunctions('./10condataset')
