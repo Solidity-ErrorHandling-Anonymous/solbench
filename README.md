@@ -6,7 +6,7 @@ The `dataset` folder contains our `dataset`, as well as a `sample` of 10 real-wo
 The `src` folder contains the scripts of our tool:
  - `contract_vistor.py` : which takes as input every contract of the sample folder and extract each error-handling features.
  - `HR.py` : which finds external calls, functions arguments, external contracts creation, revert statement-function, division by zero, enum type conversion, overflows, division by zero
- - `fetchdata.py` : which is the scrip to collect contracts from etherscan.
+ - `fetchdata.py` : which is the script to collect contracts from etherscan.
 
 Note that the scripts take as input the the contracts from the `sample` folder.
 
