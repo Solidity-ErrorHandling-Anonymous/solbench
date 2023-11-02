@@ -3,7 +3,7 @@
 To examine the evolution of error handling in the context of Solidity we have developed SOLBENCH. Through SOLBENCH we are able to collect real-world contracts incrementally and analyse them in a well-defined manner.
 
 The `dataset` folder contains a `sample`of 10 real-world smart contracts.
-You can find the whole solbench dataset in Dropbox [solbenchdataset](https://www.dropbox.com/home/solbench-dataset).
+You can find the whole solbench dataset in Dropbox [solbenchdataset](https://www.dropbox.com/scl/fo/syt16map4ucuxbkgzptnq/h?rlkey=z15p3m7scqk5gb0yuwbljywfc&dl=0).
 
 The `src` folder contains the scripts of our tool:
  - `contract_vistor.py` : which takes as input every contract of the sample folder and extract each error-handling feature.
