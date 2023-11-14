@@ -3,7 +3,7 @@
 To examine the evolution of error handling in the context of Solidity we have developed SOLBENCH. Through SOLBENCH we are able to collect real-world contracts incrementally and analyse them in a well-defined manner.
 
 The `dataset` folder contains a `sample`of 10 real-world smart contracts.
-You can find the whole solbench dataset in Dropbox [solbenchdataset](https://www.dropbox.com/scl/fo/syt16map4ucuxbkgzptnq/h?rlkey=z15p3m7scqk5gb0yuwbljywfc&dl=0). To decomprase the dataset use the following commands:
+You can find the whole solbench dataset in Dropbox [solbenchdataset](https://www.dropbox.com/scl/fo/syt16map4ucuxbkgzptnq/h?rlkey=z15p3m7scqk5gb0yuwbljywfc&dl=0). To decompress the dataset use the following commands:
 
 ```
 # Install lz4
@@ -11,7 +11,6 @@ $ sudo apt-get install lz4
 
 # Decompress a lz4 compressed file
 $ lz4 -d datasol.tar.lz4
-
 ```
 
 The `src` folder contains the scripts of our tool:
