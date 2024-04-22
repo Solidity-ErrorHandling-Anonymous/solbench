@@ -17,6 +17,7 @@ The `src` folder contains the scripts of our tool:
  - `contract_vistor.py` : which takes as input every contract of the sample folder and extract each error-handling feature.
  - `HR.py` : which finds *external calls, function arguments, external contract creation, revert statement-function, division by zero, enum type conversion, overflows/underflows, division by zero*.
  - `fetchdata.py` : the script to collect contracts from etherscan.
+ - `ast_detector.py` : produce the AST of the smart contract and find Error Handling instances.
 
 Note that the scripts take as input the the contracts from the `sample` folder.
 
