@@ -14,6 +14,7 @@ $ lz4 -d datasol.tar.lz4
 ```
 
 The `src` folder contains the scripts of our tool:
+ - `delete_comments.py` : delete comments from smart contract's source code
  - `contract_vistor.py` : which takes as input every contract of the sample folder and extract each error-handling feature.
  - `HR.py` : which finds *external calls, function arguments, external contract creation, revert statement-function, division by zero, enum type conversion, overflows/underflows, division by zero*.
  - `fetchdata.py` : the script to collect contracts from etherscan.
