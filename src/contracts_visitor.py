@@ -1,8 +1,14 @@
+#cat mydata.json | python -m json.tool > pretty.json
+#mv /media/harry/Toshiba\ SecondBrainHDD/stef_etherscan_contracts/*/* /media/harry/Toshiba\ SecondBrainHDD/allcontracts/
+
+#done '/media/harry/Toshiba SecondBrainHDD/stef_etherscan_contracts'
+
 import os
 import matplotlib.pyplot as plt
 import numpy as np
 import json
 import re
+from os import system
 
 contracts = []
 contracts_list=[]
@@ -14,12 +20,13 @@ def findWord(dire, word1, word2, word3, word4):
     for filename in os.listdir(dire):
       f = os.path.join(dire, filename)
       if os.path.isfile(f):
-        print(f)
+#        print(f)
         infile = open(f,"r")
         total_asse=0
         ext_calls=0
         total_req=0
         total_try=0
+        total_revert=0
         data = infile.read()
         req=data.count(word1)
         total_req+=req
@@ -29,6 +36,8 @@ def findWord(dire, word1, word2, word3, word4):
 #        print("assert appear ", asse)
         trr=data.count(word3)
         total_try+=trr
+        revv=data.count(word4)
+        total_revert+=revv
 #        print("try-catch appear ", trr)
 #        print("-----------------------")
 #        print("--------0-------0---------")
@@ -59,8 +68,8 @@ def findWord(dire, word1, word2, word3, word4):
             count += 1
             if "pragma" in line and "//" not in line and "ABIEncoderV2" not in line:
                 line_list=line.split(" ")
-                print(line_list)
-                print(len(line_list))
+#                print(line_list)
+#                print(len(line_list))
                 if len(line_list)==2:
                     version = line_list[1]
                 else:
@@ -73,16 +82,16 @@ def findWord(dire, word1, word2, word3, word4):
                 ext_calls=0
 #                try_list=[]
                 line_list=line.split(" ")
-                print(line_list)
+#                print(line_list)
 #                fun_name=line_list[2]
                 fun =0
                 fun_arguments = re.split(r'\(|\)',line)
 #                print(fun_name)
-                print(len(line_list))
-                print(f)
+#                print(len(line_list))
+#                print(f)
                 if "function" in line_list[0]:
                     func_count+=1
-                    print('KOUKOUROYS')
+#                    print('KOUKOUROYS')
                     if "function" in line_list:
                         funcs={
                             'function name': re.split(r'[(]', line_list[1])[0],
@@ -98,7 +107,7 @@ def findWord(dire, word1, word2, word3, word4):
                         fun=1
                 elif "function" in line_list[1] and ('*' not in line_list[0] and '//' not in line_list[0]):
                     func_count+=1
-                    print('KOUKOUROYS')
+#                    print('KOUKOUROYS')
                     if "function" in line_list:
                         funcs={
                             'function name': re.split(r'[(]', line_list[1])[0],
@@ -148,6 +157,7 @@ def findWord(dire, word1, word2, word3, word4):
                     if ("function" in line_list[4]) and ('*' not in line_list[3] and line_list[3] != "//") and ('*' not in line_list[2] and "//" not in line_list[2]) and ('*' not in line_list[1] and "//" not in line_list[1])  and ('*' not in line_list[0] and "//" not in line_list[0]) :
                         fun_name=line_list[4]
                         func_count+=1
+#                        print("KKSOOID")
                         if "function" in line_list:
                             funcs={
                                'function name': re.split(r'[(]', line_list[5])[0],
@@ -161,12 +171,11 @@ def findWord(dire, word1, word2, word3, word4):
                             funcs_list.append(funcs)
                             external_list=0
                 else:
-                    print(len(line_list))
+#                    print(len(line_list))
                     if len(line_list)>5:
                         if "function" in line_list[5] and ('*' not in line_list[4] and "//" not in line_list[4])  and ('*' not in line_list[3] and "//" not in line_list[3])  and ('*' not in line_list[2] and "//" not in line_list[2])  and ('*' not in line_list[1] and "//" not in line_list[1])  and ('*' not in line_list[0] and "//" not in line_list[0]) :
                             fun_name=line_list[5]
                             func_count+=1
-                            print("SOOSOSOOSOOSOSOOSOOSO")
                             if "function" in line_list:
                                 funcs={
                                     'function name': re.split(r'[(]', line_list[6])[0],
@@ -189,9 +198,9 @@ def findWord(dire, word1, word2, word3, word4):
 #                try_list=[]
                 line_list=line.split(" ")
                 mod_arguments = re.split(r'\(|\)|\{',line)
-                print(line_list)
-                print(len(line_list))
-                print(mod_arguments)
+#                print(line_list)
+#                print(len(line_list))
+#                print(mod_arguments)
 #                mod_name=line_list[2]
 #                print(fun_name)
 #                print("RE TI THA GINEI")
@@ -199,7 +208,7 @@ def findWord(dire, word1, word2, word3, word4):
                     func_count+=1
 #                    print("tha boume???????")
                     if "modifier" in line_list[0]:
-                        print("KAI OMWS")
+#                        print("KAI OMWS")
                         mods={
                             'modifier name': re.split(r'[(]', line_list[1])[0],
                             'modifier arguments': line_list[1],
@@ -293,11 +302,11 @@ def findWord(dire, word1, word2, word3, word4):
 #                print(line_list)
 #                mod_name=line_list[2]
 #                print(fun_name)
-                print(line_list)
+#                print(line_list)
                 if "constructor" in line_list[0]:
                      func_count+=1
-                     print(f)
-                     print("OELLELLE")
+#                     print(f)
+#                     print("OELLELLE")
 #                    print(const_arguments[1])
 #                    print("prin boume")
                      if "constructor" in line_list[0]:
@@ -317,7 +326,7 @@ def findWord(dire, word1, word2, word3, word4):
                 if len(line_list)>1:
                     if "constructor" in line_list[1] and "//" not in line_list[1] and "//" not in line_list[0]:
                         func_count+=1
-                        print("OELLELLE")
+#                        print("OELLELLE")
 #                    print(const_arguments[1])
 #                    print("prin boume")
                         if "constructor" in line_list[1]:
@@ -337,7 +346,7 @@ def findWord(dire, word1, word2, word3, word4):
                 if len(line_list)>2:
                     if "constructor" in line_list[2] and "*" not in line_list:
                         func_count+=1
-                        print("OELLELLE")
+#                        print("OELLELLE")
 #                    print(const_arguments[1])
 #                    print("prin boume")
                         if "constructor" in line_list[2] and "*" not in line_list:
@@ -357,8 +366,8 @@ def findWord(dire, word1, word2, word3, word4):
                 if len(line_list)>3:
                     if "constructor" in line_list[3] and "*" not in line_list:
                         func_count+=1
-                        print(f)
-                        print("OELLELLE")
+#                        print(f)
+#                        print("OELLELLE")
 #                    print(const_arguments[1])
 #                    print("prin boume")
                         if "constructor" in line_list[3] and "*" not in line_list and "///" not in line_list and "//" not in line_list:
@@ -377,8 +386,8 @@ def findWord(dire, word1, word2, word3, word4):
                 if len(line_list)>4:
                     if "constructor" in line_list[4] and "*" not in line_list:
                         func_count+=1
-                        print(f)
-                        print("OELLELLE")
+#                        print(f)
+#                        print("OELLELLE")
 #                    print(const_arguments[1])
 #                    print("prin boume")
                         if "constructor" in line_list[4] and "*" not in line_list and "//" not in line_list:
@@ -436,7 +445,7 @@ def findWord(dire, word1, word2, word3, word4):
             if re.findall('\\.\\b',line):
                 if '//' not in line:
                     external_list+=1
-                    print('KOAIUSUUSISIISIISI',line)
+#                    print('KOAIUSUUSISIISIISI',line)
 #                    extc={
 #                        'external calls': ext_calls
 #                    }
@@ -445,8 +454,8 @@ def findWord(dire, word1, word2, word3, word4):
                 if "//" not in line:
                     if "(" in line:
                         args_list = re.split(r'\,|\(|\)', line)
-                        print("EIMASTE EDDW")
-                        print(args_list[0],args_list[1])
+#                        print("EIMASTE EDDW")
+#                        print(args_list[0],args_list[1])
                         kou = 1
 #                print(args_list)
 #                if line_list[4]:
@@ -460,11 +469,11 @@ def findWord(dire, word1, word2, word3, word4):
             if re.findall('\\brevert\\b', line):
                 if "//" not in line and "*" not in line:
                     args_list = re.split(r'\,|\(|\)', line)
-                    print("LINE IS:", line)
+#                    print("LINE IS:", line)
                     if len(args_list)>=2:
-                        print("LINE IS:", line)
-                        print("LELA")
-                        print("LALLA",args_list[0],args_list[1])
+#                        print("LINE IS:", line)
+#                        print("LELA")
+#                        print("LALLA",args_list[0],args_list[1])
                         kou = 1
 #                print(args_list)
 #                if line_list[4]:
@@ -477,17 +486,17 @@ def findWord(dire, word1, word2, word3, word4):
                             revert_list.append(revert)
             if re.findall('\\bassert\\b', line):
                 if "//" not in line:
-                    print(line)
+#                    print(line)
                     if "(" in line:
                         args_list2 = re.split(r'\,|\(|\)', line)
                         kou = 1
-                        print("SKOUS")
-                        print(args_list2)
+#                        print("SKOUS")
+#                        print(args_list2)
 #                        if line_list[5]:
                         le=1
-                        print(len(args_list2))
+#                        print(len(args_list2))
                         if len(args_list2)>= 3:
-                            print('bikame' + str(args_list2))
+#                            print('bikame' + str(args_list2))
                             asse={
                                 'assert argument 1':args_list2[1],
                                 'assert argument 2':args_list2[2]
@@ -498,6 +507,12 @@ def findWord(dire, word1, word2, word3, word4):
         with open('mydata3.json', 'w') as f:
             json.dump(contracts, f)
 
+    print(f"Total 'require' count: {total_req}")
+    print(f"Total 'assert' count: {total_asse}")
+    print(f"Total 'try' count: {total_try}")
+    print(f"Total 'revert' count: {total_revert}")
+
 if __name__ == '__main__':
-    findWord('../dataset/sample', 'require', 'assert', 'try {', 'revert')
+    findWord('./10condataset', 'require', 'assert', 'try {', 'revert')
+    system("cat mydata.json | python -m json.tool > pretty.json")
 #    findfunctions('./10condataset')
