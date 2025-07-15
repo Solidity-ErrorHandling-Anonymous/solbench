@@ -34,3 +34,13 @@ To run the HeuristiRules script run the command:
 ```
 $ python3 HR.py
 ```
+
+To run the Error Messages detector script run the command:
+```
+$ python eh_messages.py --directory ./dataset/sample
+```
+
+To run the SMTChecker detector for a file run the command:
+```
+$ python3 smtchecker_found.py --file ./dataset/sample/0xfd1d97f0d8b100a9df095b40a13520af13df7ec1.sol
+```
